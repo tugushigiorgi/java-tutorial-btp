@@ -32,5 +32,5 @@ This is a simple Spring Boot "Hello World" app deployed on SAP BTP. It uses App 
 ---
 
 ## URL
- - https://helloworld-fantastic-hyrax-zv.cfapps.us10-001.hana.ondemand.com/
- - Router  https://web-tired-buffalo-kh.cfapps.us10-001.hana.ondemand.com/
+ - from link https://helloworld-fantastic-hyrax-zv.cfapps.us10-001.hana.ondemand.com/
+ - from Router  https://web-tired-buffalo-kh.cfapps.us10-001.hana.ondemand.com/

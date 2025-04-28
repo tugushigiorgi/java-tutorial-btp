@@ -19,13 +19,9 @@ public class MainController {
   public ResponseEntity<String> readAll(@AuthenticationPrincipal Token token) {
     if (!token.getAuthorities().contains(new SimpleGrantedAuthority("Display"))) {
       log.error("This operation requires \"Display\" scope");
-
-
-
       throw new NotAuthorizedException("This operation requires \"Display\" scope");
     }
-    log.info("hello world   CUSTOM LOGIC GOES HEARE ");
-
+    log.info("hello world");
     return new ResponseEntity<String>("Hello World!", HttpStatus.OK);
   }
 }

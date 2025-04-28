@@ -27,3 +27,8 @@ applications:
         ]
     services:
       - javauaa
+      - my-app-logging
+
+
+
+

@@ -21,7 +21,7 @@ applications:
         [
           {
             "name":"helloworld",
-            "url":"https://helloworld-fantastic-hyrax-zv.cfapps.us10-001.hana.ondemand.com/",
+            "url":"https://helloworld-persistent-kookaburra-pt.cfapps.us10-001.hana.ondemand.com/",
             "forwardAuthToken": true
           }
         ]

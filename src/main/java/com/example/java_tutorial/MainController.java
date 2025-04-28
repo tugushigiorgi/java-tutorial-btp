@@ -24,7 +24,7 @@ public class MainController {
 
       throw new NotAuthorizedException("This operation requires \"Display\" scope");
     }
-    log.info("hello world   ");
+    log.info("hello world   CUSTOM LOGIC GOES HEARE ");
 
     return new ResponseEntity<String>("Hello World!", HttpStatus.OK);
   }

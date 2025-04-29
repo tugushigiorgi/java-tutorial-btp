@@ -12,6 +12,7 @@ applications:
       JBP_CONFIG_SAP_MACHINE_JDK : "{ version: 21.+ }"
     services:
       - javauaa
+      - my-destination-svc
   - name: web
     random-route: true
     path: web
@@ -20,8 +21,9 @@ applications:
       destinations: >
         [
           {
+                   
             "name":"helloworld",
-            "url":"https://helloworld-persistent-kookaburra-pt.cfapps.us10-001.hana.ondemand.com/",
+            "url":"https://helloworld-persistent-kookaburra-pt.cfapps.us10-001.hana.ondemand.com",
             "forwardAuthToken": true
           }
         ]

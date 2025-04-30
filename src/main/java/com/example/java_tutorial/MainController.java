@@ -5,13 +5,10 @@ import static com.example.java_tutorial.ConstData.REL_URL;
 
 import com.sap.cloud.sdk.cloudplatform.connectivity.DestinationAccessor;
 import com.sap.cloud.sdk.cloudplatform.connectivity.HttpClientAccessor;
-import com.sap.cloud.sdk.cloudplatform.connectivity.HttpDestination;
 import com.sap.cloud.security.xsuaa.token.Token;
 import io.micrometer.core.instrument.util.IOUtils;
 import java.nio.charset.StandardCharsets;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,6 +30,7 @@ public class MainController {
       log.error("This operation requires \"Display\" scope");
       throw new NotAuthorizedException("This operation requires \"Display\" scope");
     }
+
     log.info("hello world");
     return new ResponseEntity<String>("Hello World!", HttpStatus.OK);
   }
@@ -40,12 +38,16 @@ public class MainController {
   @GetMapping("/call-second")
   public String callSecondApp() throws Exception {
     log.info("Entered in call-second route");
-    HttpDestination destination = DestinationAccessor.getLoader().tryGetDestination(DEST_NAME)
-        .get().asHttp();
-    HttpClient client = HttpClientAccessor.getHttpClient(destination);
-    HttpGet httpGet = new HttpGet(REL_URL);
-    HttpResponse httpResponse = client.execute(httpGet);
-    String responseString = IOUtils.toString(httpResponse.getEntity().getContent(), StandardCharsets.UTF_8);
+    var destination = DestinationAccessor.getLoader()
+        .tryGetDestination(DEST_NAME)
+        .get()
+        .asHttp();
+
+    var client = HttpClientAccessor.getHttpClient(destination);
+    var httpGet = new HttpGet(REL_URL);
+    var httpResponse = client.execute(httpGet);
+    var responseString = IOUtils.toString(httpResponse.getEntity().getContent(), StandardCharsets.UTF_8);
+
     log.info(responseString);
     return responseString;
   }

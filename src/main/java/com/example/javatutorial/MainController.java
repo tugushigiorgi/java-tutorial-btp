@@ -15,15 +15,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @Slf4j
 public class MainController {
 
-
-  @GetMapping()
+  @GetMapping
   public ResponseEntity<String> readAll(@AuthenticationPrincipal Token token) {
     if (!token.getAuthorities().contains(new SimpleGrantedAuthority("Display"))) {
       log.error("This operation requires \"Display\" scope");
@@ -50,6 +48,4 @@ public class MainController {
     log.info(responseString);
     return responseString;
   }
-
-
 }

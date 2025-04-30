@@ -1,5 +1,5 @@
 {
-  "xsappname": "helloworld",
+  "xsappname": "first-application",
   "tenant-mode": "dedicated",
   "scopes": [
     {

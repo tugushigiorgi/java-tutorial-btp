@@ -1,6 +1,6 @@
 ---
 applications:
-  - name: helloworld
+  - name: first-application
     random-route: true
     path: ./target/java-tutorial-0.0.1-SNAPSHOT.jar
     memory: 1024M
@@ -12,6 +12,7 @@ applications:
       JBP_CONFIG_SAP_MACHINE_JDK : "{ version: 21.+ }"
     services:
       - javauaa
+      - my-destination-svc
   - name: web
     random-route: true
     path: web
@@ -20,8 +21,8 @@ applications:
       destinations: >
         [
           {
-            "name":"helloworld",
-            "url":"https://helloworld-persistent-kookaburra-pt.cfapps.us10-001.hana.ondemand.com/",
+            "name":"first-application",
+            "url":"https://first-application-unexpected-giraffe-xq.cfapps.us10-001.hana.ondemand.com",
             "forwardAuthToken": true
           }
         ]

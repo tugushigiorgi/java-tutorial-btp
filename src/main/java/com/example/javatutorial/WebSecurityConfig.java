@@ -1,7 +1,8 @@
-package com.example.java_tutorial;
+package com.example.javatutorial;
 
 import com.sap.cloud.security.xsuaa.XsuaaServiceConfiguration;
 import com.sap.cloud.security.xsuaa.token.TokenAuthenticationConverter;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,16 +16,14 @@ import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
-
+@RequiredArgsConstructor
 public class WebSecurityConfig {
 
-  @Autowired
-  XsuaaServiceConfiguration xsuaaServiceConfiguration;
+  private final XsuaaServiceConfiguration xsuaaServiceConfiguration;
 
   @SuppressWarnings({ "removal", "deprecation" })
   @Bean
   public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-
     http
         .sessionManagement()
         // session is created by approuter
@@ -52,5 +51,4 @@ public class WebSecurityConfig {
     converter.setLocalScopeAsAuthorities(true);
     return converter;
   }
-
 }

@@ -1,7 +1,7 @@
-package com.example.java_tutorial;
+package com.example.javatutorial;
 
-import static com.example.java_tutorial.ConstData.DEST_NAME;
-import static com.example.java_tutorial.ConstData.REL_URL;
+import static com.example.javatutorial.ConstData.DEST_NAME;
+import static com.example.javatutorial.ConstData.REL_URL;
 
 import com.sap.cloud.sdk.cloudplatform.connectivity.DestinationAccessor;
 import com.sap.cloud.sdk.cloudplatform.connectivity.HttpClientAccessor;
@@ -19,12 +19,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(path = "")
 @Slf4j
 public class MainController {
 
 
-  @GetMapping(path = "")
+  @GetMapping()
   public ResponseEntity<String> readAll(@AuthenticationPrincipal Token token) {
     if (!token.getAuthorities().contains(new SimpleGrantedAuthority("Display"))) {
       log.error("This operation requires \"Display\" scope");

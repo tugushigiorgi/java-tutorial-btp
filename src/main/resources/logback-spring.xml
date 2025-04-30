@@ -12,7 +12,7 @@
 
 
         <logger name="com.sap.cloud.sdk" level="INFO"/>
-        <logger name="com.example.java_tutorial"    level="DEBUG"/>
+        <logger name="com.example.javatutorial" level="DEBUG"/>
 
 
 

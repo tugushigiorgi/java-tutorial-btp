@@ -2,6 +2,7 @@ package com.example.javatutorial;
 
 import static com.example.javatutorial.ConstData.DEST_NAME;
 import static com.example.javatutorial.ConstData.REL_URL;
+import static org.springframework.http.HttpStatus.OK;
 
 import com.sap.cloud.sdk.cloudplatform.connectivity.DestinationAccessor;
 import com.sap.cloud.sdk.cloudplatform.connectivity.HttpClientAccessor;
@@ -29,8 +30,9 @@ public class MainController {
     }
 
     log.info("hello world");
-    return new ResponseEntity<String>("Hello World!", HttpStatus.OK);
+    return new ResponseEntity<String>("Hello World!",OK);
   }
+
 
   @GetMapping("/call-second")
   public String callSecondApp() throws Exception {

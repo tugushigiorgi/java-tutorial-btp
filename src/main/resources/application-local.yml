@@ -1,0 +1,6 @@
+logging:
+  level:
+    root: DEBUG
+    org.springframework.web: DEBUG
+    com..example.javatutorial: DEBUG
+

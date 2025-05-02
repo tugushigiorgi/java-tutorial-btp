@@ -35,8 +35,6 @@ public class WebSecurityConfig {
   @Bean
   @Profile("prod")
   public SecurityFilterChain filterChain(HttpSecurity http, Environment env) throws Exception {
-
-    log.info("Entered in filter chain- production");
     http
         .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
         .and()
@@ -46,7 +44,6 @@ public class WebSecurityConfig {
         .and()
         .oauth2ResourceServer().jwt()
         .jwtAuthenticationConverter(getJwtAuthoritiesConverter());
-
     return http.build();
 
   }
@@ -55,12 +52,10 @@ public class WebSecurityConfig {
   @Profile("local")
   @SuppressWarnings({"removal", "deprecation"})
   public SecurityFilterChain localFilterChain(HttpSecurity http) throws Exception {
-    log.info("Entered in filter chain- LOCAL");
     http
         .csrf().disable()
         .authorizeRequests()
         .anyRequest().permitAll();
-
     return http.build();
   }
 

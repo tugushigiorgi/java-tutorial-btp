@@ -30,7 +30,7 @@ public class MainController {
     }
 
     log.info("hello world");
-    return new ResponseEntity<String>("Hello World!",OK);
+    return ResponseEntity.ok("Hello world");
   }
 
 

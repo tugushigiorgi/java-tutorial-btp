@@ -2,7 +2,7 @@ package com.example.javatutorial.Service;
 
 import com.example.javatutorial.Dto.ProductDTO;
 import com.example.javatutorial.Dto.RegionDTO;
-import java.io.IOException;
+import com.example.javatutorial.Dto.SaleDTO;
 import java.util.List;
 
 public interface NorthWindService {
@@ -11,4 +11,8 @@ public interface NorthWindService {
   ProductDTO getProductById(int id);
 
   List<RegionDTO> getRegionList();
+
+  List<SaleDTO>  salesByCategory();
+
+
 }

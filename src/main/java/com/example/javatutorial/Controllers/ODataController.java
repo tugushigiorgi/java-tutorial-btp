@@ -2,8 +2,8 @@ package com.example.javatutorial.Controllers;
 
 import com.example.javatutorial.Dto.ProductDTO;
 import com.example.javatutorial.Dto.RegionDTO;
+import com.example.javatutorial.Dto.SaleDTO;
 import com.example.javatutorial.Service.NorthWindService;
-import java.io.IOException;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -43,7 +43,16 @@ public class ODataController {
       return ResponseEntity.notFound().build();
     }
     return ResponseEntity.ok(getRegions);
-
   }
+
+  @GetMapping(value = "/sales", produces = "application/json")
+  public ResponseEntity<List<SaleDTO>> getSalesByCategory() {
+    var getSales = northWindService.salesByCategory();
+    if (getSales.isEmpty()) {
+      return ResponseEntity.notFound().build();
+    }
+    return ResponseEntity.ok(getSales);
+  }
+
 
 }

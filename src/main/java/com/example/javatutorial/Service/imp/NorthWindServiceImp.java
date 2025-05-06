@@ -6,13 +6,14 @@ import static java.util.Collections.emptyList;
 
 import com.example.javatutorial.Dto.ProductDTO;
 import com.example.javatutorial.Dto.RegionDTO;
+import com.example.javatutorial.Dto.SaleDTO;
 import com.example.javatutorial.Mapper.ProductMapper;
 import com.example.javatutorial.Mapper.RegionMapper;
+import com.example.javatutorial.Mapper.SaleMapper;
 import com.example.javatutorial.Service.NorthWindService;
 import com.example.javatutorial.services.DefaultNorthwindService;
 import com.sap.cloud.sdk.cloudplatform.connectivity.Destination;
 import com.sap.cloud.sdk.cloudplatform.connectivity.DestinationAccessor;
-import java.util.Collections;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -25,6 +26,7 @@ public class NorthWindServiceImp implements NorthWindService {
 
   private final ProductMapper productMapper;
   private final RegionMapper regionMapper;
+  private final SaleMapper saleMapper;
 
   private DefaultNorthwindService getDestinationService() {
     return new DefaultNorthwindService()
@@ -41,6 +43,7 @@ public class NorthWindServiceImp implements NorthWindService {
     var data = getDestinationService()
         .getAllProduct()
         .execute(getDestination());
+
     if (data.isEmpty()) {
       return emptyList();
     }
@@ -54,6 +57,7 @@ public class NorthWindServiceImp implements NorthWindService {
     var product = getDestinationService()
         .getProductByKey(id)
         .execute(getDestination());
+
     if (product == null) {
       return null;
     }
@@ -74,12 +78,19 @@ public class NorthWindServiceImp implements NorthWindService {
         .toList();
   }
 
+  @Override
+  public List<SaleDTO> salesByCategory() {
+    var data = getDestinationService()
+        .getAllSales_by_Category()
+        .execute(getDestination());
 
-
-
-
-
-
+    if (data.isEmpty()) {
+      return emptyList();
+    }
+    return data.stream()
+        .map(saleMapper::toDto)
+        .toList();
+  }
 
 
 }

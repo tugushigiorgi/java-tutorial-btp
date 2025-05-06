@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface NorthWindService {
   List<ProductDTO> getProductList() throws IOException;
-
+  ProductDTO getProductById(int id) throws IOException;
 }

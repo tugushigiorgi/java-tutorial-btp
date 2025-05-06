@@ -59,5 +59,16 @@ public class NorthWindServiceImp implements NorthWindService {
         .toList();
   }
 
+  @Override
+  public ProductDTO getProductById(int id) throws IOException {
+    var product = getDestinationService()
+        .getProductByKey(id)
+        .execute(getDestination());
+    if (product == null) {
+      return null;
+    }
+    return productMapper.toDto(product);
+  }
+
 
 }

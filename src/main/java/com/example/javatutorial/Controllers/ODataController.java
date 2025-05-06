@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ODataController {
   private final NorthWindService northWindService;
 
-  @GetMapping("/products")
+  @GetMapping(value = "/products", produces = "application/json")
   public ResponseEntity<List<ProductDTO>> getProducts() throws IOException {
     var getData = northWindService.getProductList();
     if (getData.isEmpty()) {
@@ -28,16 +28,14 @@ public class ODataController {
     return ResponseEntity.ok(getData);
   }
 
-
-
-
-
-
-
-
-  @GetMapping(value = "/filter/{source}", produces = "application/json")
-  public String filterData(@PathVariable String source, @PathVariable MultiValueMap<String, String> constrains) throws IOException {
-    return northWindService.filterList(source, constrains);
+  @GetMapping(value = "/products/{id}", produces = "application/json")
+  public ResponseEntity<ProductDTO> getProductById(@PathVariable int id) throws IOException {
+    var getProduct = northWindService.getProductById(id);
+    if (getProduct == null) {
+      return ResponseEntity.notFound().build();
+    }
+    return ResponseEntity.ok(getProduct);
   }
+
 
 }

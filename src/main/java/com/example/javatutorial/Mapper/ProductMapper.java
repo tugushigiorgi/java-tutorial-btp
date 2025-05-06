@@ -16,9 +16,9 @@ public interface ProductMapper {
       @Mapping(source = "productID", target = "productID"),
       @Mapping(source = "productName", target = "productName"),
       @Mapping(source = "unitPrice", target = "unitPrice"),
-      @Mapping(source = "discontinued", target = "discontinued")
+      @Mapping(source = "discontinued", target = "discontinued"),
+      @Mapping(source = "unitsInStock", target = "unitsInStock"),
   })
-    // @Mapping(target = "productName", expression = "java((String) entity.getProductName())")
   ProductDTO toDto(Product entity);
 
 }

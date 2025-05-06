@@ -7,12 +7,7 @@ import java.util.List;
 
 public interface NorthWindService {
   List<ProductDTO> getProductList();
-
   ProductDTO getProductById(int id);
-
   List<RegionDTO> getRegionList();
-
-  List<SaleDTO>  salesByCategory();
-
-
+  List<SaleDTO> salesByCategory();
 }

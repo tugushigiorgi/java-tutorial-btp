@@ -11,7 +11,6 @@ import org.mapstruct.ReportingPolicy;
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface ProductMapper {
-
   @Mappings({
       @Mapping(source = "productID", target = "productID"),
       @Mapping(source = "productName", target = "productName"),

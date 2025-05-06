@@ -15,6 +15,7 @@ import com.example.javatutorial.services.DefaultNorthwindService;
 import com.sap.cloud.sdk.cloudplatform.connectivity.Destination;
 import com.sap.cloud.sdk.cloudplatform.connectivity.DestinationAccessor;
 import java.util.List;
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -29,68 +30,56 @@ public class NorthWindServiceImp implements NorthWindService {
   private final SaleMapper saleMapper;
 
   private DefaultNorthwindService getDestinationService() {
-    return new DefaultNorthwindService()
-        .withServicePath(ODATA_BASE_URL);
+    return new DefaultNorthwindService().withServicePath(ODATA_BASE_URL);
   }
 
   private Destination getDestination() {
-    return DestinationAccessor.getLoader()
-        .tryGetDestination(ODATA_DEST_NAME).get();
+    return DestinationAccessor.getLoader().tryGetDestination(ODATA_DEST_NAME).get();
   }
 
   @Override
   public List<ProductDTO> getProductList() {
-    var data = getDestinationService()
-        .getAllProduct()
-        .execute(getDestination());
-
-    if (data.isEmpty()) {
-      return emptyList();
-    }
-    return data.stream()
+    var products = Optional.of(
+        getDestinationService()
+            .getAllProduct()
+            .execute(getDestination())
+    ).orElse(emptyList());
+    return products.stream()
         .map(productMapper::toDto)
         .toList();
   }
 
   @Override
   public ProductDTO getProductById(int id) {
-    var product = getDestinationService()
-        .getProductByKey(id)
-        .execute(getDestination());
-
-    if (product == null) {
-      return null;
-    }
+    var product = Optional.of(
+        getDestinationService()
+            .getProductByKey(id)
+            .execute(getDestination())
+    ).orElse(null);
     return productMapper.toDto(product);
   }
 
   @Override
   public List<RegionDTO> getRegionList() {
-    var data = getDestinationService()
-        .getAllRegion()
-        .execute(getDestination());
-
-    if (data.isEmpty()) {
-      return emptyList();
-    }
-    return data.stream()
+    var regions = Optional.of(
+        getDestinationService()
+            .getAllRegion()
+            .execute(getDestination())
+    ).orElse(emptyList());
+    return regions.stream()
         .map(regionMapper::toDto)
         .toList();
   }
 
   @Override
   public List<SaleDTO> salesByCategory() {
-    var data = getDestinationService()
-        .getAllSales_by_Category()
-        .execute(getDestination());
-
-    if (data.isEmpty()) {
-      return emptyList();
-    }
-    return data.stream()
+    var sales = Optional.of(
+        getDestinationService()
+            .getAllSales_by_Category()
+            .execute(getDestination())
+    ).orElse(emptyList());
+    return sales.stream()
         .map(saleMapper::toDto)
         .toList();
   }
-
-
 }

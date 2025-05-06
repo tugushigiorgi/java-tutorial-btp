@@ -11,7 +11,6 @@ import org.mapstruct.ReportingPolicy;
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface RegionMapper {
-
   @Mappings({
       @Mapping(source = "regionID", target = "regionID"),
       @Mapping(source = "regionDescription", target = "regionDescription"),

@@ -27,12 +27,9 @@ public class MainController {
       log.error("This operation requires \"Display\" scope");
       throw new NotAuthorizedException("This operation requires \"Display\" scope");
     }
-
     log.info("hello world");
     return ResponseEntity.ok("Hello world");
   }
-
-
   @GetMapping("/call-second")
   public String callSecondApp() throws Exception {
     log.info("Entered in call-second route");
@@ -40,15 +37,11 @@ public class MainController {
         .tryGetDestination(DEST_NAME)
         .get()
         .asHttp();
-
     var client = HttpClientAccessor.getHttpClient(destination);
     var httpGet = new HttpGet(REL_URL);
     var httpResponse = client.execute(httpGet);
     var responseString = IOUtils.toString(httpResponse.getEntity().getContent(), StandardCharsets.UTF_8);
-
     log.info(responseString);
     return responseString;
   }
-
-
 }

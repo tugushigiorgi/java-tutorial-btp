@@ -23,12 +23,13 @@
         <spring-boot.version>3.4.5</spring-boot.version>
         <xsuaa-spring-boot-starter.version>3.5.0</xsuaa-spring-boot-starter.version>
         <cf-java-logging-support-logback.version>3.8.4</cf-java-logging-support-logback.version>
-        <lombok.version>1.18.30</lombok.version> <!-- Use this version -->
+        <lombok.version>1.18.30</lombok.version>
         <spring-boot-starter-test.version>3.4.5</spring-boot-starter-test.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <cloud-sdk>5.18.0</cloud-sdk>
+        <lombok.mapstruct.version>0.2.0</lombok.mapstruct.version>
         <odata-version>5.0.0</odata-version>
         <mapstruct.version>1.6.3</mapstruct.version>
     </properties>
@@ -103,7 +104,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok-mapstruct-binding</artifactId>
-            <version>0.2.0</version>
+            <version>${lombok.mapstruct.version}</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
@@ -130,7 +131,7 @@
                         <path>
                             <groupId>org.projectlombok</groupId>
                             <artifactId>lombok-mapstruct-binding</artifactId>
-                            <version>0.2.0</version>
+                            <version>${lombok.mapstruct.version}</version>
                         </path>
                     </annotationProcessorPaths>
 

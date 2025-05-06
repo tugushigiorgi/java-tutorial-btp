@@ -18,41 +18,32 @@ import org.springframework.web.bind.annotation.RestController;
 public class ODataController {
   private final NorthWindService northWindService;
 
+  private <T> ResponseEntity<List<T>> handleEmptyList(List<T> data) {
+    return data.isEmpty() ? ResponseEntity.noContent().build() : ResponseEntity.ok(data);
+  }
+
+
+  private <T> ResponseEntity<T> handleItemNotFoundOrOk(T data) {
+    return data == null ? ResponseEntity.noContent().build() : ResponseEntity.ok(data);
+  }
+
   @GetMapping(value = "/products", produces = "application/json")
   public ResponseEntity<List<ProductDTO>> getProducts() {
-    var getData = northWindService.getProductList();
-    if (getData.isEmpty()) {
-      return ResponseEntity.notFound().build();
-    }
-    return ResponseEntity.ok(getData);
+    return handleEmptyList(northWindService.getProductList());
   }
 
   @GetMapping(value = "/products/{id}", produces = "application/json")
   public ResponseEntity<ProductDTO> getProductById(@PathVariable int id) {
-    var getProduct = northWindService.getProductById(id);
-    if (getProduct == null) {
-      return ResponseEntity.notFound().build();
-    }
-    return ResponseEntity.ok(getProduct);
+    return handleItemNotFoundOrOk(northWindService.getProductById(id));
   }
 
   @GetMapping(value = "/regions", produces = "application/json")
   public ResponseEntity<List<RegionDTO>> getRegions() {
-    var getRegions = northWindService.getRegionList();
-    if (getRegions.isEmpty()) {
-      return ResponseEntity.notFound().build();
-    }
-    return ResponseEntity.ok(getRegions);
+    return handleEmptyList(northWindService.getRegionList());
   }
 
   @GetMapping(value = "/sales", produces = "application/json")
   public ResponseEntity<List<SaleDTO>> getSalesByCategory() {
-    var getSales = northWindService.salesByCategory();
-    if (getSales.isEmpty()) {
-      return ResponseEntity.notFound().build();
-    }
-    return ResponseEntity.ok(getSales);
+    return handleEmptyList(northWindService.salesByCategory());
   }
-
-
 }

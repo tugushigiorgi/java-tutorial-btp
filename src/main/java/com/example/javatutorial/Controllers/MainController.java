@@ -1,9 +1,7 @@
-package com.example.javatutorial;
-
+package com.example.javatutorial.Controllers;
 import static com.example.javatutorial.ConstData.DEST_NAME;
 import static com.example.javatutorial.ConstData.REL_URL;
-import static org.springframework.http.HttpStatus.OK;
-
+import com.example.javatutorial.NotAuthorizedException;
 import com.sap.cloud.sdk.cloudplatform.connectivity.DestinationAccessor;
 import com.sap.cloud.sdk.cloudplatform.connectivity.HttpClientAccessor;
 import com.sap.cloud.security.xsuaa.token.Token;
@@ -11,7 +9,6 @@ import io.micrometer.core.instrument.util.IOUtils;
 import java.nio.charset.StandardCharsets;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.client.methods.HttpGet;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -28,11 +25,9 @@ public class MainController {
       log.error("This operation requires \"Display\" scope");
       throw new NotAuthorizedException("This operation requires \"Display\" scope");
     }
-
     log.info("hello world");
     return ResponseEntity.ok("Hello world");
   }
-
 
   @GetMapping("/call-second")
   public String callSecondApp() throws Exception {
@@ -41,12 +36,10 @@ public class MainController {
         .tryGetDestination(DEST_NAME)
         .get()
         .asHttp();
-
     var client = HttpClientAccessor.getHttpClient(destination);
     var httpGet = new HttpGet(REL_URL);
     var httpResponse = client.execute(httpGet);
     var responseString = IOUtils.toString(httpResponse.getEntity().getContent(), StandardCharsets.UTF_8);
-
     log.info(responseString);
     return responseString;
   }

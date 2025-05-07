@@ -1,8 +1,6 @@
 package com.example.javatutorial.Controllers;
-
 import static com.example.javatutorial.ConstData.DEST_NAME;
 import static com.example.javatutorial.ConstData.REL_URL;
-
 import com.example.javatutorial.NotAuthorizedException;
 import com.sap.cloud.sdk.cloudplatform.connectivity.DestinationAccessor;
 import com.sap.cloud.sdk.cloudplatform.connectivity.HttpClientAccessor;
@@ -30,6 +28,7 @@ public class MainController {
     log.info("hello world");
     return ResponseEntity.ok("Hello world");
   }
+
   @GetMapping("/call-second")
   public String callSecondApp() throws Exception {
     log.info("Entered in call-second route");

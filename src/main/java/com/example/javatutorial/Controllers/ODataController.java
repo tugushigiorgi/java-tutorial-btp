@@ -22,23 +22,28 @@ public class ODataController {
   public ResponseEntity<List<ProductDTO>> getProducts() {
     return handleEmptyList(northWindService.getProductList());
   }
+
   @GetMapping(value = "/products/{id}", produces = "application/json")
   public ResponseEntity<ProductDTO> getProductById(@PathVariable int id) {
     return handleItemNotFoundOrOk(northWindService.getProductById(id));
   }
+
   @GetMapping(value = "/regions", produces = "application/json")
   public ResponseEntity<List<RegionDTO>> getRegions() {
     return handleEmptyList(northWindService.getRegionList());
   }
+
   @GetMapping(value = "/sales", produces = "application/json")
   public ResponseEntity<List<SaleDTO>> getSalesByCategory() {
     return handleEmptyList(northWindService.salesByCategory());
   }
+
   private <T> ResponseEntity<List<T>> handleEmptyList(List<T> data) {
     return data.isEmpty()
         ? ResponseEntity.noContent().build()
         : ResponseEntity.ok(data);
   }
+
   private <T> ResponseEntity<T> handleItemNotFoundOrOk(T data) {
     return isEmpty(data)
         ? ResponseEntity.noContent().build()

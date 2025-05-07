@@ -6,7 +6,6 @@ import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 import org.mapstruct.ReportingPolicy;
 
-
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface ProductMapper {
   @Mappings({
@@ -17,6 +16,5 @@ public interface ProductMapper {
       @Mapping(source = "unitsInStock", target = "unitsInStock"),
   })
   ProductDTO toDto(Product entity);
-
 }
 

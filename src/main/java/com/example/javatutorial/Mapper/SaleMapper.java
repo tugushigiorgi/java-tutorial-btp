@@ -15,6 +15,4 @@ public interface SaleMapper {
       @Mapping(source = "productSales", target = "productSales"),
   })
   SaleDTO toDto(Sales_by_Category entity);
-
-
 }

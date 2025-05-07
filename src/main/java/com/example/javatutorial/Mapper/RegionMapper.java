@@ -13,5 +13,4 @@ public interface RegionMapper {
       @Mapping(source = "regionDescription", target = "regionDescription"),
   })
   RegionDTO toDto(Region entity);
-
 }

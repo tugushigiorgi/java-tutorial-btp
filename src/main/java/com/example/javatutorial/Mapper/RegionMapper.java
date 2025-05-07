@@ -1,8 +1,5 @@
 package com.example.javatutorial.Mapper;
-
-import com.example.javatutorial.Dto.ProductDTO;
 import com.example.javatutorial.Dto.RegionDTO;
-import com.example.javatutorial.namespaces.northwind.Product;
 import com.example.javatutorial.namespaces.northwind.Region;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

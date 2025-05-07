@@ -14,6 +14,7 @@ import com.example.javatutorial.Service.NorthWindService;
 import com.example.javatutorial.services.DefaultNorthwindService;
 import com.sap.cloud.sdk.cloudplatform.connectivity.Destination;
 import com.sap.cloud.sdk.cloudplatform.connectivity.DestinationAccessor;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
@@ -24,62 +25,59 @@ import org.springframework.stereotype.Service;
 @Slf4j
 @RequiredArgsConstructor
 public class NorthWindServiceImp implements NorthWindService {
-
   private final ProductMapper productMapper;
   private final RegionMapper regionMapper;
   private final SaleMapper saleMapper;
-
-  private DefaultNorthwindService getDestinationService() {
-    return new DefaultNorthwindService().withServicePath(ODATA_BASE_URL);
-  }
-
-  private Destination getDestination() {
-    return DestinationAccessor.getLoader().tryGetDestination(ODATA_DEST_NAME).get();
-  }
-
   @Override
   public List<ProductDTO> getProductList() {
-    var products = Optional.of(
-        getDestinationService()
-            .getAllProduct()
-            .execute(getDestination())
-    ).orElse(emptyList());
-    return products.stream()
+    return Optional.of(
+            getDestinationService()
+                .getAllProduct()
+                .execute(getDestination())
+        )
+        .orElse(emptyList())
+        .stream()
         .map(productMapper::toDto)
         .toList();
   }
-
   @Override
   public ProductDTO getProductById(int id) {
-    var product = Optional.of(
-        getDestinationService()
-            .getProductByKey(id)
-            .execute(getDestination())
-    ).orElse(null);
-    return productMapper.toDto(product);
+    return Optional.of(
+            getDestinationService()
+                .getProductByKey(id)
+                .execute(getDestination())
+        )
+        .map(productMapper::toDto)
+        .orElse(null);
   }
-
   @Override
   public List<RegionDTO> getRegionList() {
-    var regions = Optional.of(
-        getDestinationService()
-            .getAllRegion()
-            .execute(getDestination())
-    ).orElse(emptyList());
-    return regions.stream()
+    return Optional.of(
+            getDestinationService()
+                .getAllRegion()
+                .execute(getDestination())
+        ).orElse(emptyList()).stream()
         .map(regionMapper::toDto)
         .toList();
   }
-
   @Override
   public List<SaleDTO> salesByCategory() {
-    var sales = Optional.of(
-        getDestinationService()
-            .getAllSales_by_Category()
-            .execute(getDestination())
-    ).orElse(emptyList());
-    return sales.stream()
+    return Optional.of(
+            getDestinationService()
+                .getAllSales_by_Category()
+                .execute(getDestination())
+        ).orElse(emptyList())
+        .stream()
         .map(saleMapper::toDto)
         .toList();
+  }
+  private DefaultNorthwindService getDestinationService() {
+    return new DefaultNorthwindService()
+        .withServicePath(ODATA_BASE_URL);
+  }
+  private Destination getDestination() {
+    return DestinationAccessor.getLoader()
+        .tryGetDestination(ODATA_DEST_NAME)
+        .get();
   }
 }

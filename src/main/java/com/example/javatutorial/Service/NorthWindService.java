@@ -1,5 +1,4 @@
 package com.example.javatutorial.Service;
-
 import com.example.javatutorial.Dto.ProductDTO;
 import com.example.javatutorial.Dto.RegionDTO;
 import com.example.javatutorial.Dto.SaleDTO;

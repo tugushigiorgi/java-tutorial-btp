@@ -1,5 +1,4 @@
 package com.example.javatutorial.Dto;
-
 import java.math.BigDecimal;
 import lombok.Data;
 

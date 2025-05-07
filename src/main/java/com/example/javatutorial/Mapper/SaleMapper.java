@@ -1,6 +1,4 @@
 package com.example.javatutorial.Mapper;
-
-
 import com.example.javatutorial.Dto.SaleDTO;
 import com.example.javatutorial.namespaces.northwind.Sales_by_Category;
 import org.mapstruct.Mapper;

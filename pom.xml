@@ -3,21 +3,17 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
                              https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
-
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.4.5</version>
         <relativePath/>
     </parent>
-
     <groupId>com.example</groupId>
     <artifactId>java-tutorial</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>HelloWorld</name>
     <description>A simple HelloWorld Java project</description>
-
     <properties>
         <java.version>21</java.version>
         <sapdest.version>5.18.0</sapdest.version>
@@ -36,9 +32,7 @@
         <sap.jdb.version>2.24.7</sap.jdb.version>
         <sap.connector.version>2.0.9.RELEASE</sap.connector.version>
     </properties>
-
     <dependencies>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
@@ -47,56 +41,40 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-spring-service-connector</artifactId>
             <version>${sap.connector.version}</version>
         </dependency>
-
-        <!-- Validation -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
-
-        <!-- Spring Data JPA -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
-
-        <!-- SAP HANA JDBC Driver -->
         <dependency>
             <groupId>com.sap.cloud.db.jdbc</groupId>
             <artifactId>ngdbc</artifactId>
             <version>${sap.jdb.version}</version>
         </dependency>
-
-
-        <!-- XSUAA for Security -->
         <dependency>
             <groupId>com.sap.cloud.security.xsuaa</groupId>
             <artifactId>xsuaa-spring-boot-starter</artifactId>
             <version>${xsuaa-spring-boot-starter.version}</version>
         </dependency>
-
-        <!-- Logging Support -->
         <dependency>
             <groupId>com.sap.hcp.cf.logging</groupId>
             <artifactId>cf-java-logging-support-logback</artifactId>
             <version>${cf-java-logging-support-logback.version}</version>
         </dependency>
-
-        <!-- Lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
-
-        <!-- MapStruct -->
         <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct</artifactId>
@@ -114,8 +92,6 @@
             <version>${lombok.mapstruct.version}</version>
             <scope>provided</scope>
         </dependency>
-
-        <!-- OData Dependencies -->
         <dependency>
             <groupId>com.sap.cloud.sdk.datamodel</groupId>
             <artifactId>odata-v4-core</artifactId>
@@ -136,8 +112,6 @@
             <artifactId>odata-commons-core</artifactId>
             <version>${odata-version}</version>
         </dependency>
-
-        <!-- Test Dependencies -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>

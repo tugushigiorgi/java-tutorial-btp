@@ -1,9 +1,9 @@
 package com.example.javatutorial.Controllers;
+
 import static com.example.javatutorial.ConstControllerMessages.PRODUCT_CREATED;
-import static com.example.javatutorial.ConstControllerMessages.PRODUCT_DELETED;
 import static com.example.javatutorial.ControllerResponse.handleItemNotFoundOrOk;
 import static com.example.javatutorial.ControllerResponse.handleList;
-import com.example.javatutorial.Dto.NewProductDto;
+import com.example.javatutorial.Dto.CreateProductDto;
 import com.example.javatutorial.Dto.ProductDTO;
 import com.example.javatutorial.Service.ProductService;
 import jakarta.validation.Valid;
@@ -25,7 +25,7 @@ public class ProductController {
   private final ProductService productService;
 
   @PostMapping
-  public ResponseEntity createProduct(@Valid @RequestBody NewProductDto product) {
+  public ResponseEntity createProduct(@Valid @RequestBody CreateProductDto product) {
     productService.createProduct(product);
     return ResponseEntity.ok(PRODUCT_CREATED);
   }
@@ -43,6 +43,6 @@ public class ProductController {
   @DeleteMapping("/{id}")
   public ResponseEntity deleteProduct(@PathVariable Long id) {
     productService.deleteById(id);
-    return ResponseEntity.ok(PRODUCT_DELETED);
+    return ResponseEntity.noContent().build();
   }
 }

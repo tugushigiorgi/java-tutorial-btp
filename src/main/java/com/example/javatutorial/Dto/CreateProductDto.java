@@ -5,7 +5,7 @@ import org.checkerframework.checker.index.qual.Positive;
 import jakarta.validation.constraints.NotBlank;
 
 @Data
-public class NewProductDto {
+public class CreateProductDto {
   @NotBlank(message = "Product name field is required")
   public String productName;
   @NotNull(message = "Price field is required")

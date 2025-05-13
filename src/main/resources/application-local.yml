@@ -3,4 +3,12 @@ logging:
     root: DEBUG
     org.springframework.web: DEBUG
     com..example.javatutorial: DEBUG
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
 

@@ -1,5 +1,9 @@
 package com.example.javatutorial.Controllers;
+
+import static com.example.javatutorial.ControllerResponse.handleList;
+import static com.example.javatutorial.ControllerResponse.handleItemNotFoundOrOk;
 import static org.springframework.util.ObjectUtils.isEmpty;
+
 import com.example.javatutorial.Dto.ProductDTO;
 import com.example.javatutorial.Dto.RegionDTO;
 import com.example.javatutorial.Dto.SaleDTO;
@@ -20,7 +24,7 @@ public class ODataController {
 
   @GetMapping(value = "/products", produces = "application/json")
   public ResponseEntity<List<ProductDTO>> getProducts() {
-    return handleEmptyList(northWindService.getProductList());
+    return handleList(northWindService.getProductList());
   }
 
   @GetMapping(value = "/products/{id}", produces = "application/json")
@@ -30,23 +34,13 @@ public class ODataController {
 
   @GetMapping(value = "/regions", produces = "application/json")
   public ResponseEntity<List<RegionDTO>> getRegions() {
-    return handleEmptyList(northWindService.getRegionList());
+    return handleList(northWindService.getRegionList());
   }
 
   @GetMapping(value = "/sales", produces = "application/json")
   public ResponseEntity<List<SaleDTO>> getSalesByCategory() {
-    return handleEmptyList(northWindService.salesByCategory());
+    return handleList(northWindService.salesByCategory());
   }
 
-  private <T> ResponseEntity<List<T>> handleEmptyList(List<T> data) {
-    return data.isEmpty()
-        ? ResponseEntity.noContent().build()
-        : ResponseEntity.ok(data);
-  }
 
-  private <T> ResponseEntity<T> handleItemNotFoundOrOk(T data) {
-    return isEmpty(data)
-        ? ResponseEntity.noContent().build()
-        : ResponseEntity.ok(data);
-  }
 }

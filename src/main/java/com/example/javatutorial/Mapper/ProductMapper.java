@@ -1,6 +1,8 @@
 package com.example.javatutorial.Mapper;
+
 import com.example.javatutorial.Dto.ProductDTO;
 import com.example.javatutorial.namespaces.northwind.Product;
+import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
@@ -16,5 +18,15 @@ public interface ProductMapper {
       @Mapping(source = "unitsInStock", target = "unitsInStock"),
   })
   ProductDTO toDto(Product entity);
+
+
+  @Mappings({
+      @Mapping(source = "id", target = "productID"),
+      @Mapping(source = "name", target = "productName"),
+      @Mapping(source = "price", target = "unitPrice"),
+  })
+  ProductDTO toDto(com.example.javatutorial.Entities.Product product);
+
+
 }
 

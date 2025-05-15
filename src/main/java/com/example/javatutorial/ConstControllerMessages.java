@@ -5,5 +5,5 @@ public class ConstControllerMessages {
   public static final String PRODUCT_NOT_FOUND_WITH_ID = "Product not found with id: ";
   public static final String PRODUCT_DELETED= "Product deleted successfully";
   public static final String PRODUCT_CREATED= "Product created successfully";
-
+  public static final String VCAP_NOT_FOUND= "VCAP_SERVICES not found.";
 }

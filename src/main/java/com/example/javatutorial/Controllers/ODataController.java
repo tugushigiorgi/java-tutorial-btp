@@ -1,9 +1,6 @@
 package com.example.javatutorial.Controllers;
-
-import static com.example.javatutorial.ControllerResponse.handleList;
 import static com.example.javatutorial.ControllerResponse.handleItemNotFoundOrOk;
-import static org.springframework.util.ObjectUtils.isEmpty;
-
+import static com.example.javatutorial.ControllerResponse.handleList;
 import com.example.javatutorial.Dto.ProductDTO;
 import com.example.javatutorial.Dto.RegionDTO;
 import com.example.javatutorial.Dto.SaleDTO;
@@ -41,6 +38,4 @@ public class ODataController {
   public ResponseEntity<List<SaleDTO>> getSalesByCategory() {
     return handleList(northWindService.salesByCategory());
   }
-
-
 }

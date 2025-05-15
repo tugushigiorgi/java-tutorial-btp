@@ -1,6 +1,11 @@
 
 
+logging:
+  level:
+    liquibase: DEBUG
 
 spring:
-  profiles:
-    active: local
+    liquibase:
+      enabled: false
+    profiles:
+        active: local

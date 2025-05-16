@@ -32,6 +32,7 @@
         <sap.jdb.version>2.24.7</sap.jdb.version>
         <sap.connector.version>2.0.9.RELEASE</sap.connector.version>
         <liquibase.version>4.20.0</liquibase.version>
+        <maven.checkstyle.version>3.3.0</maven.checkstyle.version>
     </properties>
     <dependencies>
         <dependency>
@@ -123,14 +124,12 @@
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
         </dependency>
-
         <dependency>
             <groupId>org.liquibase.ext</groupId>
             <artifactId>liquibase-hanadb</artifactId>
             <version>${liquibase.version}</version>
         </dependency>
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
@@ -156,7 +155,6 @@
                             <version>${lombok.mapstruct.version}</version>
                         </path>
                     </annotationProcessorPaths>
-
                 </configuration>
             </plugin>
             <plugin>
@@ -191,4 +189,3 @@
         </plugins>
     </build>
 </project>
-

@@ -5,8 +5,12 @@ import com.example.javatutorial.Dto.ProductDTO;
 import java.util.List;
 
 public interface ProductService {
+
   void createProduct(CreateProductDto product);
+
   ProductDTO getProductById(Long id);
+
   List<ProductDTO> getAllProducts();
+
   void deleteById(Long id);
 }

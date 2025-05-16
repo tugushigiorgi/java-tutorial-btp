@@ -1,8 +1,9 @@
 package com.example.javatutorial.Dto;
+
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import org.checkerframework.checker.index.qual.Positive;
-import jakarta.validation.constraints.NotBlank;
 
 @Data
 public class CreateProductDto {

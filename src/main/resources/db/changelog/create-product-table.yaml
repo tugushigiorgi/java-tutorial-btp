@@ -5,7 +5,6 @@ databaseChangeLog:
       changes:
         - createTable:
             tableName: Product
-
             columns:
               - column:
                   name: id
@@ -20,4 +19,5 @@ databaseChangeLog:
               - column:
                   name: price
                   type: DECIMAL(10, 2)
+
 

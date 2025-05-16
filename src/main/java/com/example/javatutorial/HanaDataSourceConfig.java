@@ -1,5 +1,7 @@
 package com.example.javatutorial;
+
 import static com.example.javatutorial.ConstData.SAP_JDBC_DRIVER_NAME;
+
 import com.zaxxer.hikari.HikariDataSource;
 import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,10 +15,13 @@ import org.springframework.context.annotation.Profile;
 public class HanaDataSourceConfig {
   @Value("${hdi-username}")
   private String userName;
+
   @Value("${hdi-password}")
   private String password;
+
   @Value("${hdi-url}")
   private String url;
+
   @Bean
   @Primary
   public DataSource hanaDataSource() {

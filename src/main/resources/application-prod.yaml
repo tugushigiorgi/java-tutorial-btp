@@ -4,7 +4,6 @@ logging:
     org.springframework.web: INFO
     com.example.javatutorial: INFO
 
-
 spring:
   jpa:
     hibernate:
@@ -12,7 +11,6 @@ spring:
       dialect: org.hibernate.dialect.HANAColumnStoreDialect
 
   liquibase:
-
     enabled: true
     change-log: classpath:/db/changelog/db.changelog-master.yaml
     contexts: dev

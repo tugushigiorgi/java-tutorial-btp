@@ -1,6 +1,8 @@
 package com.example.javatutorial.Controllers;
+
 import static com.example.javatutorial.util.ControllerResponse.handleItemOrNotFound;
 import static com.example.javatutorial.util.ControllerResponse.handleList;
+
 import com.example.javatutorial.Dto.ProductDTO;
 import com.example.javatutorial.Dto.RegionDTO;
 import com.example.javatutorial.Dto.SaleDTO;
@@ -16,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/odata")
-public class ODataController {
+public class OdataController {
   private final NorthWindService northWindService;
 
   @GetMapping(value = "/products", produces = "application/json")

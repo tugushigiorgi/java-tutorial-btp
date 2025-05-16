@@ -13,6 +13,7 @@ applications:
       JBP_CONFIG_SAP_MACHINE_JDK : "{ version: 21.+ }"
 
     services:
+      - HDI_Tutorial
       - javauaa
       - my-destination-svc
   - name: web
@@ -24,13 +25,14 @@ applications:
         [
           {
             "name":"first-application",
-            "url":"https://first-application-unexpected-giraffe-xq.cfapps.us10-001.hana.ondemand.com",
+            "url":"https://first-application-interested-oryx-ar.cfapps.us10-001.hana.ondemand.com/",
             "forwardAuthToken": true
           }
         ]
     services:
       - javauaa
       - my-app-logging
+
 
 
 

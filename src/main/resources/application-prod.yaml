@@ -1,0 +1,20 @@
+logging:
+  level:
+    root: INFO
+    org.springframework.web: INFO
+    com.example.javatutorial: INFO
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: none
+      dialect: org.hibernate.dialect.HANAColumnStoreDialect
+
+  liquibase:
+    enabled: true
+    change-log: classpath:/db/changelog/db.changelog-master.yaml
+    contexts: dev
+
+hdi-username: ${vcap.services.HDI_Tutorial.credentials.hdi_user}
+hdi-password : ${vcap.services.HDI_Tutorial.credentials.hdi_password}
+hdi-url : ${vcap.services.HDI_Tutorial.credentials.url}

@@ -1,0 +1,125 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-additional-products
+      author: giorgi
+      changes:
+        - insert:
+            tableName: Product
+            columns:
+              - column:
+                  name: id
+                  value: 11
+              - column:
+                  name: name
+                  value: "Samsung Galaxy S24 Ultra"
+              - column:
+                  name: price
+                  value: 1099.99
+        - insert:
+            tableName: Product
+            columns:
+              - column:
+                  name: id
+                  value: 12
+              - column:
+                  name: name
+                  value: "MacBook Pro 16-inch"
+              - column:
+                  name: price
+                  value: 2499.99
+        - insert:
+            tableName: Product
+            columns:
+              - column:
+                  name: id
+                  value: 13
+              - column:
+                  name: name
+                  value: "Sony PlayStation 5"
+              - column:
+                  name: price
+                  value: 499.99
+        - insert:
+            tableName: Product
+            columns:
+              - column:
+                  name: id
+                  value: 14
+              - column:
+                  name: name
+                  value: "Dell XPS 15"
+              - column:
+                  name: price
+                  value: 1899.99
+        - insert:
+            tableName: Product
+            columns:
+              - column:
+                  name: id
+                  value: 15
+              - column:
+                  name: name
+                  value: "Apple AirPods Pro"
+              - column:
+                  name: price
+                  value: 249.99
+        - insert:
+            tableName: Product
+            columns:
+              - column:
+                  name: id
+                  value: 16
+              - column:
+                  name: name
+                  value: "iPad Pro 12.9-inch"
+              - column:
+                  name: price
+                  value: 1099.99
+        - insert:
+            tableName: Product
+            columns:
+              - column:
+                  name: id
+                  value: 17
+              - column:
+                  name: name
+                  value: "Bose QuietComfort Headphones"
+              - column:
+                  name: price
+                  value: 329.99
+        - insert:
+            tableName: Product
+            columns:
+              - column:
+                  name: id
+                  value: 18
+              - column:
+                  name: name
+                  value: "LG OLED C3 65-inch TV"
+              - column:
+                  name: price
+                  value: 1799.99
+        - insert:
+            tableName: Product
+            columns:
+              - column:
+                  name: id
+                  value: 19
+              - column:
+                  name: name
+                  value: "Dyson V15 Vacuum"
+              - column:
+                  name: price
+                  value: 699.99
+        - insert:
+            tableName: Product
+            columns:
+              - column:
+                  name: id
+                  value: 20
+              - column:
+                  name: name
+                  value: "Canon EOS R6 Camera"
+              - column:
+                  name: price
+                  value: 2499.99

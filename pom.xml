@@ -3,20 +3,17 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
                              https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.4.5</version>
         <relativePath/>
     </parent>
-
     <groupId>com.example</groupId>
     <artifactId>java-tutorial</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>HelloWorld</name>
     <description>A simple HelloWorld Java project</description>
-
     <properties>
         <java.version>21</java.version>
         <sapdest.version>5.18.0</sapdest.version>
@@ -32,8 +29,11 @@
         <lombok.mapstruct.version>0.2.0</lombok.mapstruct.version>
         <odata-version>5.0.0</odata-version>
         <mapstruct.version>1.6.3</mapstruct.version>
+        <sap.jdb.version>2.24.7</sap.jdb.version>
+        <sap.connector.version>2.0.9.RELEASE</sap.connector.version>
+        <liquibase.version>4.20.0</liquibase.version>
+        <maven.checkstyle.version>3.3.0</maven.checkstyle.version>
     </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -42,6 +42,24 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-spring-service-connector</artifactId>
+            <version>${sap.connector.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.sap.cloud.db.jdbc</groupId>
+            <artifactId>ngdbc</artifactId>
+            <version>${sap.jdb.version}</version>
         </dependency>
         <dependency>
             <groupId>com.sap.cloud.security.xsuaa</groupId>
@@ -60,14 +78,21 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+            <version>${mapstruct.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.sap.cloud.sdk.cloudplatform</groupId>
-            <artifactId>cloudplatform-connectivity-scp-cf</artifactId>
-            <version>${sapdest.version}</version>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-processor</artifactId>
+            <version>${mapstruct.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok-mapstruct-binding</artifactId>
+            <version>${lombok.mapstruct.version}</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.sap.cloud.sdk.datamodel</groupId>
@@ -90,25 +115,21 @@
             <version>${odata-version}</version>
         </dependency>
         <dependency>
-            <groupId>org.mapstruct</groupId>
-            <artifactId>mapstruct</artifactId>
-            <version>${mapstruct.version}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.mapstruct</groupId>
-            <artifactId>mapstruct-processor</artifactId>
-            <version>${mapstruct.version}</version>
-            <scope>provided</scope>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
         </dependency>
-
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok-mapstruct-binding</artifactId>
-            <version>${lombok.mapstruct.version}</version>
-            <scope>provided</scope>
+            <groupId>org.liquibase.ext</groupId>
+            <artifactId>liquibase-hanadb</artifactId>
+            <version>${liquibase.version}</version>
         </dependency>
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
@@ -134,7 +155,6 @@
                             <version>${lombok.mapstruct.version}</version>
                         </path>
                     </annotationProcessorPaths>
-
                 </configuration>
             </plugin>
             <plugin>

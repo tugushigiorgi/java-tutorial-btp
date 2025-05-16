@@ -3,6 +3,7 @@ package com.example.javatutorial.Service.imp;
 import static com.example.javatutorial.ConstData.ODATA_BASE_URL;
 import static com.example.javatutorial.ConstData.ODATA_DEST_NAME;
 import static java.util.Collections.emptyList;
+
 import com.example.javatutorial.Dto.ProductDTO;
 import com.example.javatutorial.Dto.RegionDTO;
 import com.example.javatutorial.Dto.SaleDTO;

@@ -1,7 +1,7 @@
 package com.example.javatutorial.Controllers;
 import static com.example.javatutorial.ConstControllerMessages.PRODUCT_CREATED;
-import static com.example.javatutorial.ControllerResponse.handleItemNotFoundOrOk;
-import static com.example.javatutorial.ControllerResponse.handleList;
+import static com.example.javatutorial.util.ControllerResponse.handleItemOrNotFound;
+import static com.example.javatutorial.util.ControllerResponse.handleList;
 import com.example.javatutorial.Dto.CreateProductDto;
 import com.example.javatutorial.Dto.ProductDTO;
 import com.example.javatutorial.Service.ProductService;
@@ -35,7 +35,7 @@ public class ProductController {
   @GetMapping(value = "/{id}", produces = "application/json")
   public ResponseEntity<ProductDTO> getProduct(@PathVariable Long id) {
     log.info("Fetching product with ID: {}", id);
-    return handleItemNotFoundOrOk(productService.getProductById(id));
+    return handleItemOrNotFound(productService.getProductById(id));
   }
 
   @GetMapping(produces = "application/json")

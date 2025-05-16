@@ -31,6 +31,7 @@
         <mapstruct.version>1.6.3</mapstruct.version>
         <sap.jdb.version>2.24.7</sap.jdb.version>
         <sap.connector.version>2.0.9.RELEASE</sap.connector.version>
+        <liquibase.version>4.20.0</liquibase.version>
     </properties>
     <dependencies>
         <dependency>
@@ -126,7 +127,7 @@
         <dependency>
             <groupId>org.liquibase.ext</groupId>
             <artifactId>liquibase-hanadb</artifactId>
-            <version>4.20.0</version>
+            <version>${liquibase.version}</version>
         </dependency>
     </dependencies>
 

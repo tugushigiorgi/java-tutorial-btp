@@ -17,4 +17,6 @@ spring:
     change-log: classpath:/db/changelog/db.changelog-master.yaml
     contexts: dev
 
-
+hdi-username: ${vcap.services.HDI_Tutorial.credentials.hdi_user}
+hdi-password : ${vcap.services.HDI_Tutorial.credentials.hdi_password}
+hdi-url : ${vcap.services.HDI_Tutorial.credentials.url}

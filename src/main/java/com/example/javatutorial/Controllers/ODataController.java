@@ -1,6 +1,6 @@
 package com.example.javatutorial.Controllers;
-import static com.example.javatutorial.ControllerResponse.handleItemNotFoundOrOk;
-import static com.example.javatutorial.ControllerResponse.handleList;
+import static com.example.javatutorial.util.ControllerResponse.handleItemOrNotFound;
+import static com.example.javatutorial.util.ControllerResponse.handleList;
 import com.example.javatutorial.Dto.ProductDTO;
 import com.example.javatutorial.Dto.RegionDTO;
 import com.example.javatutorial.Dto.SaleDTO;
@@ -26,7 +26,7 @@ public class ODataController {
 
   @GetMapping(value = "/products/{id}", produces = "application/json")
   public ResponseEntity<ProductDTO> getProductById(@PathVariable int id) {
-    return handleItemNotFoundOrOk(northWindService.getProductById(id));
+    return handleItemOrNotFound(northWindService.getProductById(id));
   }
 
   @GetMapping(value = "/regions", produces = "application/json")

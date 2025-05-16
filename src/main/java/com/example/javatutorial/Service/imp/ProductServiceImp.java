@@ -28,7 +28,7 @@ public class ProductServiceImp implements ProductService {
   }
 
   @Override
-  @Transactional
+  @Transactional(readOnly = true)
   public ProductDTO getProductById(Long id) {
     return productRepository.findById(id)
         .map(productMapper::toDto)
@@ -36,7 +36,7 @@ public class ProductServiceImp implements ProductService {
   }
 
   @Override
-  @Transactional
+  @Transactional(readOnly = true)
   public List<ProductDTO> getAllProducts() {
     return productRepository.findAll().stream()
         .map(productMapper::toDto)

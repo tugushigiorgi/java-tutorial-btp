@@ -10,19 +10,18 @@ import org.mapstruct.ReportingPolicy;
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface ProductMapper {
 
-  @SuppressWarnings("checkstyle:WhitespaceAfter")
   @Mappings({
       @Mapping(source = "productID", target = "productID"),
       @Mapping(source = "productName", target = "productName"),
       @Mapping(source = "unitPrice", target = "unitPrice"),
       @Mapping(source = "discontinued", target = "discontinued"),
-      @Mapping(source = "unitsInStock", target = "unitsInStock"), })
+      @Mapping(source = "unitsInStock", target = "unitsInStock"),})
   ProductDTO toDto(Product entity);
 
   @Mappings({
       @Mapping(source = "id", target = "productID"),
       @Mapping(source = "name", target = "productName"),
-      @Mapping(source = "price", target = "unitPrice"), })
+      @Mapping(source = "price", target = "unitPrice"),})
   ProductDTO toDto(com.example.javatutorial.Entities.Product product);
 }
 

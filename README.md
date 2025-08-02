@@ -1,6 +1,6 @@
-# 🚀 Spring Boot Hello World – SAP BTP Auth with App Router & XSUAA
+# 🚀 Spring Boot  – SAP BTP Auth with App Router & XSUAA
 
-This is a simple Spring Boot "Hello World" app deployed on SAP BTP. It uses App Router and XSUAA for authentication and role-based authorization.
+This is a simple Spring Boot   app deployed on SAP BTP. It uses App Router and XSUAA for authentication and role-based authorization.
 
 ---
 
